@@ -1,0 +1,26 @@
+{
+    "name": "browser-frontend",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {},
+    "homepage": "https://github.com/PGPB/browser-frontend/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PGPB/browser-frontend.git"
+    },
+    "bugs": {
+        "url": "https://github.com/PGPB/browser-frontend/issues"
+    },
+    "author": {
+        "name": "PGPB",
+        "url": "https://github.com/PGPB"
+    },
+    "private": true,
+    "engines": {
+        "yarn": ">=1.15.0"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+}
