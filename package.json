@@ -2,7 +2,17 @@
     "name": "browser-frontend",
     "version": "1.0.0",
     "description": "",
-    "scripts": {},
+    "scripts": {
+        "build:prod": "webpack --config webpack.config.prod",
+        "build:dev": "webpack --config webpack.config.dev",
+        "build": "yarn build:prod",
+        "watch:prod": "webpack --watch --config webpack.config.prod",
+        "watch:dev": "webpack --watch --config webpack.config.dev",
+        "watch": "yarn watch:dev",
+        "zip": "bestzip dist/ ./dist/frontend.zip *",
+        "clean": "rimraf ./dist",
+        "tslint": "tslint -c tslint.json -p tsconfig.json"
+    },
     "homepage": "https://github.com/PGPB/browser-frontend/README.md",
     "repository": {
         "type": "git",
@@ -17,7 +27,7 @@
     },
     "private": true,
     "engines": {
-        "yarn": ">=1.15.0"
+        "yarn": ">=1.19.0"
     },
     "dependencies": {
         "autoprefixer": "^9.7.1",
