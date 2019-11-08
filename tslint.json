@@ -33,6 +33,8 @@
                 ]
             }
         },
+        // we use this in some places because of React.
+        "no-empty-interface": false,
         "no-namespace": [
             true,
             "allow-declarations"
