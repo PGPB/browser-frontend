@@ -1,0 +1,89 @@
+//-
+  Base parent HTML5 template for all pages.
+
+
+block vars
+  //- App Information.
+  - var title = "PGPB";
+
+  //- Build Information.
+  - var buildInfo = {
+  -   isProduction: htmlWebpackPlugin.options.isProduction,
+  -   nodeEnv: htmlWebpackPlugin.options.nodeEnv,
+  -   commitHash: htmlWebpackPlugin.options.commitHash,
+  -   date: htmlWebpackPlugin.options.date
+  - };
+  - buildInfo.full = (
+  -   `${buildInfo.nodeEnv ? buildInfo.nodeEnv : "?"}-` +
+  -   `${buildInfo.commitHash ? buildInfo.commitHash : "?"}-` +
+  -   `${buildInfo.date ? buildInfo.date : "?"}`
+  - );
+
+  //- URL's of libs for import.
+  - var cssLib = {
+  -   normalize: `https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize${buildInfo.isProduction ? '.min' : ''}.css`
+  - };
+  - var jsLib = {
+  -   react: `https://unpkg.com/react@16/umd/react.${buildInfo.isProduction ? 'production.min' : 'development'}.js`,
+  -   reactDom: `https://unpkg.com/react-dom@16/umd/react-dom.${buildInfo.isProduction ? 'production.min' : 'development'}.js`
+  - };
+
+
+block mixins
+  mixin css(href, props={})
+    link(
+      rel="stylesheet"
+      crossorigin=props.isLib
+      href=href
+    )&attributes(attributes)
+
+  mixin js(src, props={})
+    script(
+      defer=props.defer
+      async=props.async
+      crossorigin=props.isLib
+      src=src
+    )&attributes(attributes)
+
+  mixin js-defer(src, props={})
+    - props.defer = true;
+
+    +js(
+      src,
+      props
+    )&attributes(attributes)
+
+  mixin js-async(src, props={})
+    - props.async = true;
+
+    +js(
+      src,
+      props
+    )&attributes(attributes)
+
+
+<!DOCTYPE html>
+<!-- Build Information: #{buildInfo.full} -->
+
+html(
+  class=htmlClass
+  lang=htmlLang ? htmlLang : "ru"
+)
+  head
+    block head
+      meta(charset="UTF-8")
+      meta(name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
+      meta(http-equiv="X-UA-Compatible" content="ie=edge")
+      title=title
+
+  body(
+    class=bodyClass
+  )
+    block body
+      noscript=(noscriptText ? noscriptText : "Please enable JavaScript to see this page.")
+
+      block bodyStart
+      block header
+      block main
+      block footer
+      block bodyEnd

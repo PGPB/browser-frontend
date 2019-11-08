@@ -1,0 +1,19 @@
+extends .././_common/html5
+
+
+block append vars
+  - var title = "Портал государственной поддержки бизнеса";
+
+
+block append head
+  +css(cssLib.normalize, {isLib: true})
+  +css("index.css")
+
+  +js-defer(jsLib.react, {isLib: true})
+  +js-defer(jsLib.reactDom, {isLib: true})
+
+
+block append body
+  main(
+    id="root"
+  )
