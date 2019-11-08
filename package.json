@@ -1,0 +1,72 @@
+{
+    "name": "browser-frontend",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "build:prod": "webpack --config webpack.config.prod",
+        "build:dev": "webpack --config webpack.config.dev",
+        "build": "yarn build:prod",
+        "watch:prod": "webpack --watch --config webpack.config.prod",
+        "watch:dev": "webpack --watch --config webpack.config.dev",
+        "watch": "yarn watch:dev",
+        "zip": "bestzip ./dist/frontend.zip ./dist/*",
+        "clean": "rimraf ./dist",
+        "tslint": "tslint -c tslint.json -p tsconfig.json"
+    },
+    "homepage": "https://github.com/PGPB/browser-frontend/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PGPB/browser-frontend.git"
+    },
+    "bugs": {
+        "url": "https://github.com/PGPB/browser-frontend/issues"
+    },
+    "author": {
+        "name": "PGPB",
+        "url": "https://github.com/PGPB"
+    },
+    "private": true,
+    "engines": {
+        "yarn": ">=1.19.0"
+    },
+    "dependencies": {
+        "autoprefixer": "^9.7.1",
+        "awesome-typescript-loader": "^5.2.1",
+        "bestzip": "^2.1.5",
+        "copy-webpack-plugin": "^5.0.5",
+        "css-loader": "^3.2.0",
+        "file-loader": "^4.2.0",
+        "git-revision-webpack-plugin": "^3.0.4",
+        "hard-source-webpack-plugin": "^0.13.1",
+        "html-webpack-plugin": "^3.2.0",
+        "mini-css-extract-plugin": "^0.8.0",
+        "node-sass": "^4.13.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "postcss-loader": "^3.0.0",
+        "pug": "^2.0.4",
+        "pug-loader": "^2.4.0",
+        "react": "^16.11.0",
+        "react-dom": "^16.11.0",
+        "react-loadable": "^5.5.0",
+        "remove-files-webpack-plugin": "^1.1.3",
+        "sass-loader": "^8.0.0",
+        "typescript": "^3.7.2",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10",
+        "webpack-merge": "^4.2.2",
+        "webpack-merge-and-include-globally": "^2.1.20"
+    },
+    "devDependencies": {
+        "@types/hard-source-webpack-plugin": "^1.0.1",
+        "@types/html-webpack-plugin": "^3.2.1",
+        "@types/mini-css-extract-plugin": "^0.8.0",
+        "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
+        "@types/react": "^16.9.11",
+        "@types/react-dom": "^16.9.4",
+        "@types/react-loadable": "^5.5.2",
+        "@types/webpack-merge": "^4.1.5",
+        "rimraf": "^3.0.0",
+        "tslint": "^5.20.1",
+        "tslint-react": "^4.1.0"
+    }
+}
