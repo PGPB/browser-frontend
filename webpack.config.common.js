@@ -115,6 +115,9 @@ module.exports = class Config {
                         ]
                     }
                 }),
+                new CopyWebpackPlugin([
+                    `${this.folder.static}/favicon`
+                ]),
                 new MiniCssExtractPlugin({
                     filename: '[name].css'
                 }),
