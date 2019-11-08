@@ -9,7 +9,7 @@
         "watch:prod": "webpack --watch --config webpack.config.prod",
         "watch:dev": "webpack --watch --config webpack.config.dev",
         "watch": "yarn watch:dev",
-        "zip": "bestzip dist/ ./dist/frontend.zip *",
+        "zip": "bestzip ./dist/frontend.zip ./dist/*",
         "clean": "rimraf ./dist",
         "tslint": "tslint -c tslint.json -p tsconfig.json"
     },
