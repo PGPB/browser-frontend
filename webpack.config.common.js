@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const {TsConfigPathsPlugin} = require('awesome-typescript-loader');
 const HardSourcePlugin = require('hard-source-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
@@ -11,7 +12,7 @@ const GitRevisionPlugin = require('git-revision-webpack-plugin');
 module.exports = class Config {
     static get folder() {
         const resolve = (...args) => {
-            return path.resolve(__dirname, args);
+            return path.resolve(__dirname, ...args);
         };
 
         return {
@@ -115,13 +116,13 @@ module.exports = class Config {
                         ]
                     }
                 }),
-                new CopyWebpackPlugin([
+                new CopyPlugin([
                     `${this.folder.static}/favicon`
                 ]),
                 new MiniCssExtractPlugin({
                     filename: '[name].css'
                 }),
-                new HTMLWebpackPlugin({
+                new HTMLPlugin({
                     ...HTMLPluginCommonOptions,
                     template: `${this.folder.pug}/index/_index.pug`,
                     filename: 'index.html',
