@@ -66,7 +66,7 @@ module.exports = class Config {
             // custom information.
             isProduction: isProduction,
             nodeEnv: env.NODE_ENV,
-            commitHash: this.commithash(),
+            commitHash: this.commitHash(),
             date: Date.now()
         };
 
