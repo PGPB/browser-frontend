@@ -28,11 +28,37 @@ module.exports = class Config {
         };
     }
 
+    /**
+     * @see https://github.com/pirelenito/git-revision-webpack-plugin/issues/19#issuecomment-481443028
+     */
+    static commitHash() {
+        // "During Heroku builds, the SOURCE_VERSION and
+        // STACK environment variables are set."
+        const isOnHeroku = (
+            process.env.SOURCE_VERSION &&
+            process.env.STACK
+        );
+        let gitRevisionPlugin = {};
+
+        if (!isOnHeroku) {
+            gitRevisionPlugin = new GitRevisionPlugin();
+        }
+
+        // "If we're on Heroku, we don't have access to the .git directory so we can't
+        // rely on git commands to get the version. What we *do* have during Heroku
+        // builds is a SOURCE_VERSION env with the git SHA of the commit being built,
+        // so we can use that instead to generate the version file."
+        return (
+            isOnHeroku ?
+            process.env.SOURCE_VERSION :
+            gitRevisionPlugin.commithash()
+        );
+    }
+
     static config(env) {
         env = env || {};
 
         const isProduction = (env.NODE_ENV === 'production');
-        const gitRevisionPlugin = new GitRevisionPlugin();
         const HTMLPluginCommonOptions = {
             // plugin options.
             inject: false,
@@ -40,7 +66,7 @@ module.exports = class Config {
             // custom information.
             isProduction: isProduction,
             nodeEnv: env.NODE_ENV,
-            commitHash: gitRevisionPlugin.commithash(),
+            commitHash: this.commithash(),
             date: Date.now()
         };
 
